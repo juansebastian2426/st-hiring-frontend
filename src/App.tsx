@@ -1,22 +1,34 @@
+import React from 'react';
+import {useDispatch} from 'react-redux';
+import {AppDispatch} from "./store";
+import {EventList} from "./components/EventList.tsx";
+import {EventsAppBar} from "./components/EventsAppBar.tsx";
+import {getClientSettingByClientId} from "./services/settingService.ts";
+import {addSettings} from "./store/reducers/clientSettingSlice.ts";
+import Container from "@mui/material/Container";
+
+// const clientId = generateClientId()
+
 function App() {
+    const dispatch = useDispatch<AppDispatch>();
+
+    React.useEffect(() => {
+        getClientSettingByClientId(529316)
+            .then(setting => {
+                dispatch(addSettings(setting))
+            })
+    }, [dispatch])
+
   return (
-    <div
-      style={{
-        width: "100vw",
-        height: "100vh",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        flexDirection: "column",
-      }}
-    >
-      <h1>See Tickets </h1>
-      <div className="card">
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-    </div>
+      <>
+          <EventsAppBar />
+
+          <Container style={{ marginTop: 20 }}>
+              <div>
+                  <EventList />
+              </div>
+          </Container>
+      </>
   );
 }
 

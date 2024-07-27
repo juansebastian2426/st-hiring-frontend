@@ -8,11 +8,11 @@ Create a single UI that consumes the endpoint `GET /events` from the backend API
 
 - Use MUI to build a simple UI
 - The UI should be responsive
-- Use Redux as a store management
+- Use Redux as a index management
 
 Create a form to update a settings object in the provided API (This API is part of the backend test)
 
 - Use MUI to build a simple Form
 - The UI should be responsive
-- Use Redux as a store management
+- Use Redux as a index management
 - Use formik as the form components
